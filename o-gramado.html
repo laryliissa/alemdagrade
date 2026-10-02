@@ -142,7 +142,98 @@
         border: 2px solid var(--ink);
       }
     </style>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Kalam:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .diary-notebook {
+        background-color: #fdfaf6;
+        border-radius: 4px 16px 16px 4px;
+        box-shadow:
+          inset 6px 0 15px rgba(0, 0, 0, 0.08),
+          8px 8px 20px rgba(0, 0, 0, 0.15);
+        padding: 3rem 3rem 4rem 4rem;
+        position: relative;
+        background-image: repeating-linear-gradient(
+          transparent,
+          transparent 31px,
+          #94a3b8 31px,
+          #94a3b8 32px
+        );
+        background-attachment: local;
+        border-left: 12px solid #1e293b; /* Spine of the notebook */
+        margin-bottom: 3rem;
+      }
+      .diary-notebook::before {
+        content: "";
+        position: absolute;
+        left: 3.5rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #fca5a5; /* Red margin line */
+        z-index: 0;
+      }
+      .diary-content {
+        position: relative;
+        z-index: 1;
+        padding-left: 1rem;
+        padding-top: 4px; /* Align text with lines */
+      }
+
+      .diary-notebook h1 {
+        font-family: "Kalam", cursive;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        color: #1e293b;
+        margin-bottom: 2rem;
+        transform: rotate(-1deg);
+        background-color: rgba(253, 250, 246, 0.8);
+        padding: 0 10px;
+        display: inline-block;
+      }
+
+      .diary-notebook h2,
+      .diary-notebook h3 {
+        font-family: "Kalam", cursive;
+        font-size: 2rem;
+        line-height: 32px;
+        color: #334155;
+        margin-top: 2rem;
+        margin-bottom: 32px;
+        background-color: #fdfaf6;
+        padding: 0 10px;
+        display: inline-block;
+        transform: rotate(-0.5deg);
+      }
+
+      .diary-notebook p {
+        font-family: "Caveat", cursive;
+        font-size: 1.75rem;
+        line-height: 32px; /* Must match background gradient */
+        margin-top: 0;
+        margin-bottom: 32px;
+        color: #334155;
+      }
+
+      /* Paper texture overlay */
+      .diary-notebook::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none;
+        border-radius: 4px 16px 16px 4px;
+        z-index: 10;
+      }
+    </style>
   </head>
+
   <body class="w-full min-h-screen flex flex-col relative">
     <!-- ==========================================
        HEADER (Limpo e direto)
@@ -191,456 +282,417 @@
         </button>
       </div>
     </header>
-
-    <!-- ==========================================
-       CONTEÚDO PRINCIPAL (Grid 2/3 + 1/3)
-  =========================================== -->
-    <main class="flex-grow max-w-6xl mx-auto px-5 py-10 w-full">
-      <div class="grid lg:grid-cols-[1fr_320px] gap-10 items-start">
-        <!-- COLUNA ESQUERDA: POSTS -->
-        <div class="flex flex-col gap-10">
-          <!-- DESTAQUE PRINCIPAL (Rock in Rio) -->
-          <article
-            class="sticker-card p-5 sm:p-6 bg-white flex flex-col md:flex-row gap-6 items-center"
-          >
-            <div class="w-full md:w-1/2 flex items-center justify-center">
-              <div class="w-full relative">
-                <img
-                  src="stray-kids-festival.jpeg"
-                  alt="O Gramado, o Salompas e o Stray Kids"
-                  class="img-border w-full h-auto object-contain"
-                />
+    <main
+      class="flex-grow max-w-3xl mx-auto px-5 py-10 w-full bg-white border-x-2 border-[var(--ink)] shadow-2xl mt-10 mb-10 rounded-2xl"
+    >
+      <article class="prose max-w-none">
+        <div class="diary-notebook">
+          <div class="diary-content">
+            <div class="mb-8">
+              <span
+                class="inline-block bg-[var(--k-acid)] text-[var(--ink)] font-bold text-xs uppercase tracking-wider px-3 py-1 border-2 border-[var(--ink)] rounded-full mb-4"
+                >Campo</span
+              >
+              <div
+                class="mono-font text-sm text-neutral-500 font-bold tracking-wider"
+              >
+                30 SET 2026 • LARYLIISSA
               </div>
             </div>
 
-            <div
-              class="w-full md:w-1/2 flex flex-col justify-center py-2 pl-0 sm:pl-4"
+            <h1
+              class="display-font text-4xl sm:text-5xl font-bold leading-[1.1] text-[var(--ink)] mb-4"
             >
-              <span class="pill bg-[var(--k-acid)] text-[var(--ink)] w-fit mb-4"
-                >Destaque</span
+              O Gramado, o Salompas e o Stray Kids
+            </h1>
+            <div
+              class="mono-font text-[12px] text-neutral-500 flex flex-wrap items-center gap-4 border-b-2 border-dashed border-[var(--ink)] pb-4"
+            >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="calendar" class="w-4 h-4"></i> 27 Set
+                2026</span
               >
-
-              <h2
-                class="display-font text-3xl font-bold text-[var(--ink)] leading-tight mb-3"
+              <span class="flex items-center gap-1"
+                ><i data-lucide="user" class="w-4 h-4"></i> Laryliissa</span
               >
-                O gramado, o Salompas e o Stray Kids: o retorno a um festival
-                após 18 anos
-              </h2>
-
-              <p class="text-sm text-neutral-600 font-medium mb-3 line-clamp-3">
-                Aos 39 anos, troquei a inconsequência da grade por meias de
-                compressão e um show assistido da lateral do palco. Uma reflexão
-                sobre limites, comportamento de manada e a liberdade de deitar
-                no chão.
-              </p>
-
-              <p class="text-sm italic text-[var(--k-pink)] font-bold mb-6">
-                Até que ponto o sacrifício físico ainda é usado como régua para
-                medir o amor de um fã?
-              </p>
-
-              <div class="flex items-center justify-between mt-auto">
-                <div
-                  class="mono-font text-[10px] text-neutral-500 flex items-center gap-2"
-                >
-                  <span
-                    ><i data-lucide="calendar" class="w-3 h-3 inline"></i> 30
-                    Set 2026</span
-                  >
-                  <span>•</span>
-                  <span class="text-[var(--k-cyan)] font-bold"
-                    >Além da Grade</span
-                  >
-                </div>
-                <a
-                  href="o-gramado.html"
-                  class="mono-font text-[10px] font-bold uppercase bg-[var(--k-lilac)] text-white px-4 py-2 border-2 border-[var(--ink)] rounded-full hover:bg-[var(--k-pink)] transition-colors shadow-[2px_2px_0_var(--ink)] hover:-translate-y-0.5"
-                >
-                  Ler mais &rarr;
-                </a>
-              </div>
             </div>
-          </article>
+          </div>
 
-          <!-- BANNER COMECE POR AQUI -->
+          <!-- Feature Image -->
+          <div class="my-8">
+            <img
+              src="stray-kids-festival.jpeg"
+              alt="Laryliissa no festival"
+              class="w-full img-border shadow-[4px_4px_0_var(--ink)]"
+            />
+          </div>
+
           <div
-            class="sticker-card bg-[#f0e6ff] p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 border-[var(--k-lilac)]"
+            class="text-lg font-medium leading-relaxed text-neutral-800 space-y-6"
           >
-            <div class="flex-grow text-center md:text-left">
-              <h3
-                class="display-font text-2xl font-bold text-[var(--ink)] mb-2"
-              >
-                Afinal, o que é o Além da Grade?
-              </h3>
-              <p class="text-sm font-medium text-neutral-800 leading-relaxed">
-                Minha pesquisa é sobre como ficar além da grade — sendo fã de um
-                jeito que recusa o sacrifício — gera aprendizado, mesmo quando o
-                fandom não é o lugar de acolhimento que promete ser. E é esse
-                aprendizado que traz pertencimento e melhora a vida.
-              </p>
-            </div>
-            <div class="shrink-0">
-              <button
-                onclick="document.getElementById('btn-open-manifesto').click()"
-                class="mono-font text-[11px] font-bold uppercase bg-[var(--ink)] text-white px-6 py-3 rounded-full hover:bg-[var(--k-acid)] hover:text-[var(--ink)] transition-colors shadow-[4px_4px_0_var(--k-pink)] border-2 border-[var(--ink)]"
-              >
-                Ler Manifesto
-              </button>
-            </div>
-          </div>
+            <p>Depois de 18 anos, eu retornei a um festival.</p>
 
-          <!-- LISTA DE ÚLTIMOS ESCRITOS -->
-          <div>
-            <div
-              class="flex items-center gap-3 border-b-2 border-[var(--ink)] pb-3 mb-6"
-            >
-              <h3 class="display-font text-2xl font-bold text-[var(--ink)]">
-                Últimos escritos
-              </h3>
-              <i
-                data-lucide="sparkles"
-                class="w-5 h-5 text-[var(--k-lilac)]"
-              ></i>
-            </div>
-
-            <div class="flex flex-col gap-6">
-              <!-- Post Item 1: River / 2018 -->
-              <article
-                class="flex flex-col sm:flex-row gap-5 items-start sm:items-center group border-b-2 border-dashed border-[var(--ink)] pb-6 last:border-0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=400"
-                  alt="Música e reflexão"
-                  class="w-full sm:w-32 h-40 sm:h-24 object-cover img-border group-hover:shadow-[4px_4px_0_var(--k-pink)] transition-shadow"
-                />
-
-                <div class="flex-grow">
-                  <h4
-                    class="display-font text-lg font-bold text-[var(--ink)] group-hover:text-[var(--k-pink)] transition-colors mb-2"
-                  >
-                    <a href="#"
-                      >"O que você gosta de fazer?": o choque no sistema de uma
-                      adulta funcional</a
-                    >
-                  </h4>
-                  <p
-                    class="text-sm text-neutral-600 font-medium line-clamp-2 mb-2"
-                  >
-                    Como uma pergunta sem resposta na terapia em 2018 e a batida
-                    agressiva de uma trilha sonora racharam a minha grade do
-                    adultismo e me devolveram a permissão para sentir.
-                  </p>
-                  <p
-                    class="text-xs italic text-[var(--k-lilac)] font-bold line-clamp-1"
-                  >
-                    Onde você escondeu o seu entusiasmo para caber nas
-                    expectativas?
-                  </p>
-                </div>
-
-                <div
-                  class="sm:text-right shrink-0 mono-font text-[10px] text-neutral-500 flex flex-row sm:flex-col gap-3 sm:gap-1 w-full sm:w-auto"
-                >
-                  <span class="flex items-center sm:justify-end gap-1"
-                    ><i data-lucide="calendar" class="w-3 h-3"></i> 25 Set
-                    2026</span
-                  >
-                  <span
-                    class="flex items-center sm:justify-end gap-1 text-[var(--k-pink)] font-bold"
-                    ><i data-lucide="folder" class="w-3 h-3"></i> Paixões</span
-                  >
-                </div>
-              </article>
-
-              <!-- Post Item 2 -->
-              <article
-                class="flex flex-col sm:flex-row gap-5 items-start sm:items-center group border-b-2 border-dashed border-[var(--ink)] pb-6 last:border-0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400"
-                  alt="Estudos e IA"
-                  class="w-full sm:w-32 h-40 sm:h-24 object-cover img-border group-hover:shadow-[4px_4px_0_var(--k-cyan)] transition-shadow"
-                />
-
-                <div class="flex-grow">
-                  <h4
-                    class="display-font text-lg font-bold text-[var(--ink)] group-hover:text-[var(--k-cyan)] transition-colors mb-2"
-                  >
-                    <a href="#"
-                      >Toploaders, papelaria e pequenos aprendizados</a
-                    >
-                  </h4>
-                  <p
-                    class="text-sm text-neutral-600 font-medium line-clamp-2 mb-2"
-                  >
-                    Às vezes, são os detalhes do cotidiano, como a organização
-                    de um binder, que mais nos ensinam sobre nosso foco e
-                    regulação.
-                  </p>
-                  <p
-                    class="text-xs italic text-[var(--k-pink)] font-bold line-clamp-1"
-                  >
-                    O que os seus trabalhos manuais revelam sobre o seu
-                    descanso?
-                  </p>
-                </div>
-
-                <div
-                  class="sm:text-right shrink-0 mono-font text-[10px] text-neutral-500 flex flex-row sm:flex-col gap-3 sm:gap-1 w-full sm:w-auto"
-                >
-                  <span class="flex items-center sm:justify-end gap-1"
-                    ><i data-lucide="calendar" class="w-3 h-3"></i> 12 Set
-                    2026</span
-                  >
-                  <span
-                    class="flex items-center sm:justify-end gap-1 text-[var(--k-cyan)] font-bold"
-                    ><i data-lucide="folder" class="w-3 h-3"></i> Criação</span
-                  >
-                </div>
-              </article>
-
-              <!-- Post Item 3 -->
-              <article
-                class="flex flex-col sm:flex-row gap-5 items-start sm:items-center group border-b-2 border-dashed border-[var(--ink)] pb-6 last:border-0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400"
-                  alt="Pessoas conversando"
-                  class="w-full sm:w-32 h-40 sm:h-24 object-cover img-border group-hover:shadow-[4px_4px_0_var(--k-acid)] transition-shadow"
-                />
-
-                <div class="flex-grow">
-                  <h4
-                    class="display-font text-lg font-bold text-[var(--ink)] group-hover:text-[var(--ink)] transition-colors mb-2"
-                  >
-                    <a href="#">Prateleiras relacionais e a melhor companhia</a>
-                  </h4>
-                  <p
-                    class="text-sm text-neutral-600 font-medium line-clamp-2 mb-2"
-                  >
-                    Sobre encontrar paz nas pausas, organizar os níveis de
-                    intimidade online e evitar as "fanwars" que drenam nossa
-                    energia.
-                  </p>
-                  <p
-                    class="text-xs italic text-[var(--k-cyan)] font-bold line-clamp-1"
-                  >
-                    Você sabe delimitar os espaços virtuais que consome?
-                  </p>
-                </div>
-
-                <div
-                  class="sm:text-right shrink-0 mono-font text-[10px] text-neutral-500 flex flex-row sm:flex-col gap-3 sm:gap-1 w-full sm:w-auto"
-                >
-                  <span class="flex items-center sm:justify-end gap-1"
-                    ><i data-lucide="calendar" class="w-3 h-3"></i> 28 Ago
-                    2026</span
-                  >
-                  <span
-                    class="flex items-center sm:justify-end gap-1 text-[var(--k-acid)] font-bold"
-                    ><i data-lucide="folder" class="w-3 h-3"></i> Limites</span
-                  >
-                </div>
-              </article>
-            </div>
-
-            <div class="mt-8 text-center sm:text-left">
-              <a
-                href="#"
-                class="display-font text-sm font-bold text-[var(--ink)] hover:text-[var(--k-pink)] underline underline-offset-4"
-              >
-                Ver todos os posts &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- COLUNA DIREITA: SIDEBAR -->
-        <aside class="flex flex-col gap-8">
-          <!-- Widget: Sobre Mim -->
-          <div class="sticker-card bg-[var(--paper)] p-6 text-center">
-            <!-- Foto com Efeito Scrapbook / Polaroid -->
-            <div class="w-32 h-36 mx-auto mb-5 relative group cursor-pointer">
-              <!-- Fita adesiva (washi tape) superior esquerda -->
-              <div
-                class="absolute -top-2 -left-3 w-12 h-5 bg-[var(--k-acid)] opacity-90 rotate-[-15deg] z-10 border border-[var(--ink)] shadow-[2px_2px_0_rgba(0,0,0,0.2)]"
-              ></div>
-              <!-- Fita adesiva (washi tape) inferior direita -->
-              <div
-                class="absolute -bottom-2 -right-3 w-12 h-5 bg-[var(--k-cyan)] opacity-90 rotate-[-10deg] z-10 border border-[var(--ink)] shadow-[2px_2px_0_rgba(0,0,0,0.2)]"
-              ></div>
-
-              <!-- Moldura Polaroid -->
-              <div
-                class="w-full h-full rounded-md border-2 border-[var(--ink)] overflow-hidden shadow-[4px_4px_0_var(--ink)] group-hover:shadow-[6px_6px_0_var(--k-pink)] group-hover:-translate-y-1 transition-all duration-300 bg-white p-1.5 pb-5 transform rotate-3 group-hover:rotate-0"
-              >
-                <!-- A imagem com filtro CSS sutil -->
-                <img
-                  src="foto-lary.jpg"
-                  alt="Foto de Lary"
-                  class="w-full h-full object-cover border border-[var(--ink)] sepia-[.3] contrast-[1.1] saturate-[1.2] group-hover:sepia-0 transition-all duration-500"
-                />
-              </div>
-            </div>
-
-            <p class="hand-font text-xl text-[var(--ink)] leading-none mb-1">
-              Oi, eu sou
+            <p>
+              Quando fui ao Lupa-Luna, eu tinha por volta dos 20 anos. Fui com
+              uma amiga e lembro que foi uma experiência e tanto. Choveu, os
+              tênis ficaram um nojo, claro, risos.
             </p>
-            <h3
-              class="display-font text-2xl font-bold text-[var(--k-pink)] mb-3"
+
+            <p>
+              Mas também lembro de coisas muito boas. Lulu Santos, Charlie Brown
+              Jr. e NX Zero eram alguns dos meus favoritos naquela época. O show
+              do Charlie Brown, principalmente, tinha uma atmosfera muito
+              especial.
+            </p>
+
+            <p>
+              Agora, 18 anos depois, eu estava me preparando para viver aquilo
+              de novo.
+            </p>
+
+            <p>Só que aos 39 anos a preparação é um pouco diferente.</p>
+
+            <p>
+              A gente entope a sola do pé de Salompas, usa meia de compressão
+              para ajudar na circulação, leva analgésico, comida, capa de chuva,
+              energético em gel e, principalmente, aprende a sentar no chão em
+              qualquer lugar. Risos.
+            </p>
+
+            <p>
+              Eu e minhas amigas optamos por fazer um bate e volta. Para
+              completar, elas ainda enfrentaram voo cancelado em cima da hora e
+              aquele gasto inesperado para conseguir viver a experiência.
+              Guerreiras, com um bom saldo no cartão, risos.
+            </p>
+
+            <p>
+              Ficou a lição: na próxima, melhor chegar na cidade pelo menos um
+              dia antes.
+            </p>
+
+            <h2
+              class="display-font text-3xl font-bold text-[var(--ink)] mt-12 mb-6"
             >
-              Laryliissa
-            </h3>
+              Chegando ao festival
+            </h2>
+
+            <p>
+              Eu não tive problemas com o voo e uma das coisas que mais me
+              chamou atenção foi perceber os olhares das pessoas.
+            </p>
+
+            <p>Eu já estava praticamente toda no look de festival.</p>
+
+            <p>E isso ainda é complexo para mim.</p>
+
+            <p>
+              Não estou acostumada a receber tantos olhares de julgamento.
+              Então, estar ali, vestida como eu queria, ocupando aquele espaço e
+              simplesmente vivendo a experiência também fazia parte do desafio.
+            </p>
+
+            <p>
+              Chegamos por volta das 16h. Pegamos praticamente zero fila,
+              tiramos algumas fotos no letreiro e, meu Deus, quanta gente.
+            </p>
+
+            <p>Estava tudo lotado.</p>
+
+            <p>
+              Passamos no locker para guardar as tralhas e fomos para o palco
+              principal, porque os meninos do NEXZ já estavam se apresentando.
+            </p>
+
+            <p>E zero surpresa: mais um grupo de K-pop para a coleção.</p>
+
+            <p>
+              Minha saga de conhecer e amar grupos depois de ver ao vivo
+              continua firme e forte, risos.
+            </p>
+
+            <p>
+              Mesmo quando eles não são o centro do festival, são sempre muito
+              bem-vindos.
+            </p>
+
+            <h2
+              class="display-font text-3xl font-bold text-[var(--ink)] mt-12 mb-6"
+            >
+              Entre a muvuca e os meus limites
+            </h2>
+
+            <p>Depois disso veio o aperto básico da galera que foi chegando.</p>
+
+            <p>Nós escolhemos ficar mais para a lateral esquerda do palco.</p>
+
+            <p>Veio a Hwasa e eu amei a apresentação dela. Foi muito bom.</p>
+
+            <p>
+              Mas já passava das 19h e, para quem tinha acordado às 5h da manhã
+              para fazer cabelo e dormido umas três horas, eu já estava chegando
+              no meu limite.
+            </p>
+
+            <p>Então saímos daquele lugar.</p>
+
+            <p>E foi ótimo.</p>
+
+            <p>Descansamos, tomamos Coca-Cola e deitamos no chão, risos.</p>
+
+            <p>
+              Depois veio o Alok. E, cara, ele arrasou na setlist. Pretendo
+              repetir quando puder, risos.
+            </p>
+
+            <p>
+              Mais tarde, escolhemos esperar o show do Stray Kids mais próximo
+              de uma das laterais, onde tínhamos um pouco mais de espaço.
+            </p>
+
+            <p>
+              Claro que, em vários momentos, foi insalubre. Tinha gente
+              circulando o tempo todo.
+            </p>
+
+            <p>Mas conseguimos esperar sentadas durante boa parte do tempo.</p>
+
+            <p>
+              Até que, em determinado momento, levei um empurrão gratuito de uma
+              menina que surtou porque eu não dei passagem automaticamente no
+              primeiro pedido.
+            </p>
+
+            <p>Ela simplesmente me empurrou.</p>
+
+            <p>Eu, super tranquila, soltei:</p>
 
             <p
-              class="text-xs font-medium text-neutral-700 leading-relaxed mb-5"
+              class="hand-font text-3xl text-[var(--k-pink)] my-6 text-center transform -rotate-1"
             >
-              Pedagoga, psicopedagoga e fã. Com um diagnóstico tardio de
-              neurodivergência aos 30+, encontrei na cultura asiática e no K-pop
-              o caminho para resgatar a própria identidade.
+              “Mas é uma cavala mesmo.”
             </p>
 
-            <a
-              href="#"
-              class="mono-font text-[10px] font-bold uppercase bg-white border-2 border-[var(--ink)] px-4 py-2 rounded-md hover:bg-[var(--k-cyan)] transition-colors inline-block w-full shadow-[2px_2px_0_var(--ink)]"
-            >
-              Saiba mais sobre mim &rarr;
-            </a>
-          </div>
+            <p>Risos.</p>
 
-          <!-- Widget: Busca -->
-          <div class="sticker-card p-2 bg-white flex items-center">
-            <input
-              type="text"
-              placeholder="Buscar no diário..."
-              class="flex-grow px-3 py-2 text-sm focus:outline-none bg-transparent font-medium placeholder-neutral-400"
-            />
-            <button class="p-2 text-neutral-400 hover:text-[var(--k-pink)]">
-              <i data-lucide="search" class="w-4 h-4"></i>
-            </button>
-          </div>
+            <p>
+              Todo mundo em volta se indignou e ela saiu batendo os pés,
+              parecendo o Godzilla daqueles filmes antigos.
+            </p>
 
-          <!-- Widget: Categorias -->
-          <div class="sticker-card p-6 bg-white">
-            <h3
-              class="display-font text-lg font-bold border-b-2 border-dashed border-[var(--ink)] pb-2 mb-4"
+            <h2
+              class="display-font text-3xl font-bold text-[var(--ink)] mt-12 mb-6"
             >
-              Territórios
-            </h3>
+              Ser fã também é uma questão de limite
+            </h2>
 
-            <ul
-              class="flex flex-col gap-3 text-sm font-medium text-neutral-700"
+            <p>
+              Minha trajetória como fã tem uma história que explica bastante da
+              pessoa que eu sou hoje.
+            </p>
+
+            <p>Meu primeiro grande show como “tiete” foi Sandy & Junior.</p>
+
+            <p>Eu tinha 14 anos.</p>
+
+            <p>
+              Fui de salto alto, cheguei às 6 da manhã para pegar fila e,
+              obviamente, não ouvia minha mãe.
+            </p>
+
+            <p>Zero juízo.</p>
+
+            <p>Em resumo:</p>
+
+            <p
+              class="bg-[var(--bg-dots)] p-4 border-2 border-[var(--ink)] rounded-xl font-bold text-center"
             >
-              <li>
-                <a
-                  href="#"
-                  class="flex justify-between items-center group hover:text-[var(--k-lilac)]"
-                >
-                  <span class="flex items-center gap-2"
-                    ><i
-                      data-lucide="scissors"
-                      class="w-4 h-4 opacity-50 group-hover:opacity-100"
-                    ></i>
-                    Mesa de Criação</span
-                  >
-                  <span
-                    class="mono-font text-[10px] bg-[var(--bg-dots)] px-2 py-0.5 rounded border border-[var(--ink)]"
-                    >12</span
-                  >
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex justify-between items-center group hover:text-[var(--k-cyan)]"
-                >
-                  <span class="flex items-center gap-2"
-                    ><i
-                      data-lucide="map-pin"
-                      class="w-4 h-4 opacity-50 group-hover:opacity-100"
-                    ></i>
-                    Espaços & Corpos</span
-                  >
-                  <span
-                    class="mono-font text-[10px] bg-[var(--bg-dots)] px-2 py-0.5 rounded border border-[var(--ink)]"
-                    >9</span
-                  >
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex justify-between items-center group hover:text-[var(--k-acid)]"
-                >
-                  <span class="flex items-center gap-2"
-                    ><i
-                      data-lucide="shield"
-                      class="w-4 h-4 opacity-50 group-hover:opacity-100"
-                    ></i>
-                    Filtros & Limites</span
-                  >
-                  <span
-                    class="mono-font text-[10px] bg-[var(--bg-dots)] px-2 py-0.5 rounded border border-[var(--ink)]"
-                    >7</span
-                  >
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex justify-between items-center group hover:text-[var(--k-pink)]"
-                >
-                  <span class="flex items-center gap-2"
-                    ><i
-                      data-lucide="book-open"
-                      class="w-4 h-4 opacity-50 group-hover:opacity-100"
-                    ></i>
-                    Aprendizagens</span
-                  >
-                  <span
-                    class="mono-font text-[10px] bg-[var(--bg-dots)] px-2 py-0.5 rounded border border-[var(--ink)]"
-                    >6</span
-                  >
-                </a>
-              </li>
+              vuco-vuco &rarr; passar mal &rarr; me separar da amiga &rarr;
+              assistir ao show pelo telão junto com o resto das 50 mil pessoas.
+            </p>
+
+            <p>Então, eu já conheço essa história de querer ficar perto.</p>
+
+            <p>Conheço muito bem.</p>
+
+            <p>Por isso, para esse festival, fiz um combinado comigo mesma:</p>
+
+            <p
+              class="text-xl font-bold leading-relaxed text-[var(--k-lilac)] text-center my-6"
+            >
+              eu não iria ultrapassar meus limites.
+            </p>
+
+            <p>E foi exatamente o que fiz.</p>
+
+            <ul class="space-y-2 mb-8 list-disc pl-5">
+              <li>Fui confortável.</li>
+              <li>Levei meus aparatos.</li>
+              <li>Fone.</li>
+              <li>Capa de chuva.</li>
+              <li>Comida.</li>
+              <li>Energético em gel.</li>
             </ul>
-          </div>
 
-          <!-- Widget: Newsletter -->
-          <div class="sticker-card p-6 bg-[var(--k-lilac)] text-[var(--ink)]">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="bg-white p-2 rounded-lg border-2 border-[var(--ink)]">
-                <i data-lucide="mail" class="w-5 h-5"></i>
-              </div>
-              <h3 class="display-font text-lg font-bold">
-                Receba novos escritos
-              </h3>
-            </div>
-            <p class="text-xs font-medium mb-4 text-[var(--ink)] opacity-80">
-              Assine a newsletter e receba notas de campo e reflexões da semana
-              no seu e-mail.
+            <p>Escolhi ficar em lugares onde conseguia respirar e descansar.</p>
+
+            <p>Não fiquei tentando chegar cada vez mais perto da grade.</p>
+
+            <p>E não passei mal.</p>
+
+            <p>
+              Uma das meninas que estava com a gente também precisou ficar mais
+              afastada e respeitou os próprios limites.
             </p>
-            <form class="flex flex-col gap-2">
-              <input
-                type="email"
-                placeholder="seu@email.com"
-                class="px-3 py-2 rounded-md border-2 border-[var(--ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--k-acid)]"
-              />
-              <button
-                type="submit"
-                class="mono-font text-[10px] font-bold uppercase bg-[var(--ink)] text-white px-4 py-2.5 rounded-md hover:bg-[var(--k-acid)] hover:text-[var(--ink)] transition-colors shadow-[2px_2px_0_#ffffff]"
+
+            <p>
+              E sim, está tudo bem ficar mais longe da muvuca para conseguir se
+              regular e não passar mal.
+            </p>
+
+            <p>
+              Aliás, talvez isso seja uma das coisas mais importantes que eu
+              aprendi nesse festival:
+            </p>
+
+            <blockquote
+              class="bg-[var(--k-acid)] p-6 border-2 border-[var(--ink)] rounded-xl shadow-[4px_4px_0_var(--ink)] transform rotate-1 my-10 text-center"
+            >
+              <p
+                class="display-font text-2xl font-bold leading-snug text-[var(--ink)]"
               >
-                Quero receber
-              </button>
-            </form>
+                você não precisa provar que é fã se colocando em sofrimento.
+              </p>
+            </blockquote>
+
+            <p>A paixão é intensa. Mas a gente também precisa se cuidar.</p>
+
+            <p>
+              Eu tenho a impressão de que quem organiza grandes shows nem sempre
+              entende o tamanho do envolvimento que existe em alguns fandoms.
+            </p>
+
+            <p>K-poper é emocionado.</p>
+
+            <p>É engajado.</p>
+
+            <p>É muita gente.</p>
+
+            <p>E esse público cresceu muito nos últimos anos.</p>
+
+            <p>
+              A quantidade de eventos, grupos, restaurantes, produtos e
+              experiências ligados à cultura coreana aumentou bastante.
+            </p>
+
+            <p>
+              E quando você coloca uma multidão de fãs apaixonados no mesmo
+              lugar, a intensidade aparece.
+            </p>
+
+            <p>Às vezes de um jeito muito bonito.</p>
+
+            <p>Às vezes de um jeito preocupante.</p>
+
+            <p>
+              Empurra-empurra, gente tentando chegar cada vez mais perto,
+              pessoas que passam horas sem sair do lugar para não perder a
+              posição.
+            </p>
+
+            <p>A paixão pode fazer a gente esquecer algumas coisas básicas.</p>
+
+            <p>Inclusive o próprio corpo.</p>
+
+            <p>
+              E eu acho que é justamente aí que essa história começa a ficar
+              interessante para mim.
+            </p>
+
+            <p>
+              Porque durante muito tempo eu também achei que estar perto era
+              parte da experiência.
+            </p>
+
+            <p>Talvez até uma prova de quanto eu gostava.</p>
+
+            <p>Hoje eu penso diferente.</p>
+
+            <p>Eu ainda quero estar perto.</p>
+
+            <p>Ainda fico emocionada.</p>
+
+            <p>Ainda quero ver meus grupos.</p>
+
+            <p>Ainda tenho meus surtos de fã, obviamente, risos.</p>
+
+            <p>Mas eu também quero voltar para casa bem.</p>
+
+            <h2
+              class="display-font text-3xl font-bold text-[var(--ink)] mt-12 mb-6"
+            >
+              E foi aí que aconteceu o meu festival
+            </h2>
+
+            <p>
+              No final do show, nós nos encontramos e fomos para o transfer.
+            </p>
+
+            <p>
+              Sim, transfer do aeroporto para a Cidade do Rock e depois de
+              volta, às 3 da manhã.
+            </p>
+
+            <p>Porque nada de maiores perrengues.</p>
+
+            <p>
+              Somos jovens de 30+ e precisamos trabalhar com planejamento,
+              risos.
+            </p>
+
+            <p>Para mim, isso também faz parte da experiência.</p>
+
+            <p>Não é só escolher o show.</p>
+
+            <ul class="space-y-2 mb-8 list-disc pl-5">
+              <li>É pensar em como chegar.</li>
+              <li>Onde descansar.</li>
+              <li>O que levar.</li>
+              <li>Como voltar.</li>
+              <li>Com quem estar.</li>
+              <li>Até onde ir.</li>
+              <li>E, principalmente, quando parar.</li>
+            </ul>
+
+            <p>
+              Talvez essa seja uma das maiores diferenças entre aquela menina de
+              14 anos que chegou às 6 da manhã de salto alto e a mulher de 39
+              que voltou para um festival depois de 18 anos.
+            </p>
+
+            <p>Eu continuo querendo viver a experiência.</p>
+
+            <p>Só não preciso mais me abandonar para isso.</p>
+
+            <p
+              class="text-xl font-bold leading-relaxed text-[var(--ink)] mt-12 text-center pb-8 border-b-2 border-dashed border-[var(--ink)]"
+            >
+              E talvez seja justamente isso que existe Além da Grade.
+            </p>
           </div>
-        </aside>
+        </div>
+      </article>
+
+      <!-- Back button -->
+      <div class="mt-10 text-center">
+        <a
+          href="index.html"
+          class="mono-font text-sm font-bold uppercase tracking-wider text-[var(--ink)] hover:text-[var(--k-pink)] flex justify-center items-center gap-2"
+        >
+          <i data-lucide="arrow-left" class="w-5 h-5"></i> Voltar para o Início
+        </a>
       </div>
     </main>
-
-    <!-- ==========================================
-       FOOTER
-  =========================================== -->
     <footer class="w-full bg-white border-t-2 border-[var(--ink)] mt-10">
       <div
         class="max-w-6xl mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between gap-4"
